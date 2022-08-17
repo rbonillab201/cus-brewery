@@ -7,5 +7,7 @@ import net.cuscatlan.cusbrewery.web.model.BeerDTO;
 public interface BeerService {
 
 	BeerDTO getBeerById(UUID beerId);
+	BeerDTO saveBeer(BeerDTO beerDTO);
+	
 	
 }
