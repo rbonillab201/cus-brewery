@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import net.cuscatlan.cusbrewery.service.BeerService;
@@ -30,14 +32,21 @@ public class BeerController {
 		return new ResponseEntity<>(beerService.getBeerById(beerId),HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity saveBeer(BeerDTO beerDTO) {
+	@PostMapping 
+	public ResponseEntity saveBeer(@RequestBody BeerDTO beerDTO) {
 		
 		BeerDTO savedBeer = beerService.saveBeer(beerDTO);
 		HttpHeaders headers = new HttpHeaders(); 
-		headers.add("Ubicación", savedBeer.getBeerId().toString());		
-		return new ResponseEntity("/api/v1/beer" + headers,HttpStatus.CREATED);
+		headers.add("Ubicación : ",savedBeer.getBeerId().toString());		
+		return new ResponseEntity( "/api/v1/beer/" + headers,HttpStatus.CREATED);
 	}
+	
+	@PutMapping("/{beerId}")
+	public ResponseEntity updateBeer(@RequestBody BeerDTO beerDTO, @PathVariable("beerId") UUID beerId) {
+		beerService.updateBeer(beerDTO,beerId);
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
+	}
+	
 	
 	
 	

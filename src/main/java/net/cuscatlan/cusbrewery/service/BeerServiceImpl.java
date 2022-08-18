@@ -25,4 +25,10 @@ public class BeerServiceImpl implements BeerService {
 				.build();
 	}
 
+	@Override
+	public void updateBeer(BeerDTO beerDTO, UUID beerId ) {
+		// TODO hay que completarlo, llegado el momento
+		
+	}
+
 }
