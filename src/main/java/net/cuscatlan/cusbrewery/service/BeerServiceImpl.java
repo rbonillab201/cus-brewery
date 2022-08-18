@@ -35,7 +35,7 @@ public class BeerServiceImpl implements BeerService {
 	}
 
 	@Override
-	public void deleteBeer(UUID beerId) {
+	public void deleteBeerById(UUID beerId) {
 		// TODO Auto-generated method stub
 		log.debug("Se ha borrado el registro " + beerId.toString());
 	}
