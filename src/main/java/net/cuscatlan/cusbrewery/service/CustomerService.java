@@ -1,6 +1,7 @@
 package net.cuscatlan.cusbrewery.service;
 
 import java.util.UUID;
+
 import net.cuscatlan.cusbrewery.web.model.CustomerDTO;
 
 /**
@@ -11,5 +12,8 @@ import net.cuscatlan.cusbrewery.web.model.CustomerDTO;
 public interface CustomerService {
 	
 	CustomerDTO getCustomerById(UUID customerId);
+	CustomerDTO savedCustomer(CustomerDTO customerDTO);
+	void updateCustomerById(CustomerDTO customerDTO, UUID customerId);
+	void deleteCutomerById(UUID customerId);
 
 }
